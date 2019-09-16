@@ -17,7 +17,6 @@ This quicklab will require several command-line tools to be completed, you will 
 
 1. Install Docker
 2. Install minikube
-2. Install kubectl
 3. Install Appsody
 4. Install VS Code
 5. 	Install codewind extension
@@ -26,7 +25,7 @@ This quicklab will require several command-line tools to be completed, you will 
 
 </details>
 
-## Getting Familiar with Application with Appsody
+## Getting Familiar with Appsody
 
 [Appsody](https://appsody.dev/) is a command-line interface that can be used for the initialization of cloud native projects. Let's look at how to use Appsody to initialize a Spring Boot project. 
 
@@ -59,60 +58,6 @@ Organizations will have their own specific needs and requirements. For which cus
 appsody repo add incubator https://raw.githubusercontent.com/seabaylea/stacks/javametrics-dev/index.yaml
 ```
 
-## Initializing an Application with Appsody
-
-Let's initialize a project using the `java-spring-boot2` stack, this will create a new Spring Boot project using Spring Boot 2 and other libraries commonly used in cloud native applications; actuator, web. 
-
-To initialize a new project run the following three commands:
-
-```
-mkdir appsody-spring
-cd appsody-spring
-appsody init java-spring-boot2
-```
-
-After a few moments, appsody should finish initializing the project. 
-
-We can run the project locally with the following command:
-
-```
-appsody run
-```
-
-This builds and starts up the Docker container running the Sprinng Boot app and makes it available at the standard Spring Boot port: [http://localhost:8080](http://localhost:8080).
-
-To stop this application run the following command:
-
-```
-appsody stop
-```
-
-### Deploying an Application to Kubernetes with Appsody 
-
-The cloud native world demands developer learn a lot of new skills that traditionally they didn't need to care about. Appsody helps to reduce this learning curve by helping with tasks like deploying to a kubernetes cluster. 
-
-We will first need to setup docker registry for the local minikube cluster, so that minikube can pull the image we will be sending it in the next step. To do that run the following command:
-
-```
-eval $(minikube docker-env)
-```
-
-To deploy the application we just created to a kubernetes cluster, in this case a locally running instance of [minikube](https://github.com/kubernetes/minikube), run the following command:
-
-```
-appsody deploy
-``` 
-
-Once the deploy has completed, we will need to tell minikube to expose the service, to do this run the following command:
-
-```
-minikube service appsody-spring
-```
-
-Minikube will expose the service and open a browser window allowing you to view the application we just deployed.
-
-Appsody helps developers with initializing a cloud native project and deploying to modern infrastructure like kubernetes. Let's now take a look at another Kabanero project, Codewind.  
-
 ## Improving Developer Productivity with Eclipse Codewind
 
 [Eclipse Codewind](https://www.eclipse.org/codewind/) is also an open source project that is part of Kabanero. Codewind is a plugin for IDEs, currently available in VS Code, Eclipse, and Eclipse Che, that helps improve developer productivity. Let's explore how Codewind can help you be a more productive developer.
@@ -124,22 +69,19 @@ Appsody helps developers with initializing a cloud native project and deploying 
 4. Enter **codewind-spring** as the project name and hit enter
 	![](images/codewind-new-project-part2.png)
 
-
 ### Automated Code Reload
 
-A key to increasing developer productivity is shortening and reducing the friction in the feedback loop. Having to manually run `mvn package` and `docker build` every time you want to verify your application is time consuming and ddistracting. Codewind helps by automatically re-build a re-deploy the application whenever a change is saved to a code file.  
+A key to increasing developer productivity is shortening and reducing the friction in the feedback loop. Having to manually run `mvn package` and `docker build` every time you want to verify and change to your application is time consuming and distracting. When appsody detects a change in a running application, it will automatically rebuild and redeploy the application.  
 
 Let's look at this feature in action.
 
-1. In VS Code click the "go to application" icon	![](images/codewind-view-application.png)
-2. Append `/v1?name=Oracle Code One` to the end of the url
-3. In VS Code add the **codewind-spring** project folder to the explorer
-	![](images/codewind-add-folder.png)
-4. 	In the project under **src/main/java/application/rest/v1** open **Example.java**
-5. Edit **Example.java** to look like below:
+3. In VS Code add the **cloud-native-spring** project folder to the explorer
+	![](images/add-folder.png)
+4. 	In the project under **src/main/java/application** create a new file **Hello.java**
+5. Edit **Hello.java** to look like below:
 	
 	```java
-	package application.rest.v1;
+	package application;
 	
 	import org.springframework.web.bind.annotation.RequestMapping;
 	import org.springframework.web.bind.annotation.RestController;
@@ -151,9 +93,9 @@ Let's look at this feature in action.
 	import java.util.List;
 	
 	@RestController
-	public class Example {
+	public class Hello {
 	
-	    @RequestMapping("v1")
+	    @RequestMapping("v1/hello")
 	    public @ResponseBody ResponseEntity<String> example(@RequestParam("name") String name) {
 	        List<String> list = new ArrayList<>();
 	        //return a simple list of strings
@@ -166,4 +108,45 @@ Let's look at this feature in action.
 	}
 	```
 6. You can view the status of the re-build and re-deploy by looking at the status indictaor next to the project under the Codewind context. Once status returnss to [Running][Build Suceeded] you can refresh your browser window to view the change we made. 
-	![](images/codewind-status.png)	
+	![](images/project-status.png)	
+1. In VS Code click the "go to application" icon	![](images/open-project.png)
+2. Append `/v1/hello?name=Oracle Code One` to the end of the url
+
+### Viewing Application Logs
+
+Viewing the logs of your application running in a docker container is easy from the IDE with Codewind. 
+
+
+
+### Deploying an Application to Kubernetes with Appsody 
+
+The cloud native world demands developer learn a lot of new skills that traditionally they didn't need to care about. Appsody helps to reduce this learning curve by helping with tasks like deploying to a kubernetes cluster. 
+
+1. First we will need to start our minikube cluster:
+
+	```
+	minikube start
+	```
+
+1. Next we will need to setup docker registry for the local minikube cluster, so that minikube can pull the image we will be sending it in the next step. To do that run the following command:
+
+	```
+	eval $(minikube docker-env)
+	```
+
+1. To deploy the application we just created to a kubernetes cluster, in this case a locally running instance of [minikube](https://github.com/kubernetes/minikube), run the following command:
+
+	```
+	appsody deploy
+	``` 
+
+1. Once the deploy has completed, we will need to tell minikube to expose the service, to do this run the following command:
+
+	```
+	minikube service appsody-spring
+	```
+
+Minikube will expose the service and open a browser window allowing you to view the application we just deployed.
+
+Appsody and Codewind help Java developers create, build, and deploy cloud native applications without having to be experts in cloud native development!
+
