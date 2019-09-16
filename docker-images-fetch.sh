@@ -17,3 +17,4 @@ for url in ${INDEX_LIST}; do
             docker pull $stack_2
         fi
     done
+done
