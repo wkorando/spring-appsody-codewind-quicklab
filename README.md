@@ -1,8 +1,10 @@
 # Spring Appsody Codewind Quicklab
 
-Kabanero is a set of open source projects supported by IBM to help developers quickly build and deploy cloud native applications. 
+Organizations are moving to the cloud and that is creating a lot of demand for developers to learn new technologies. Creating a "Cloud Native" application requires developers to learn about containers (e.g. Docker) and platforms like Kubernetes. These are very complex technologies, so what are developers to do while still needing to develop applications that deliver business value? 
 
-In this quicklab we will take a look at a couple of the projects under Kabanero; Appsody and Codewind and how they can help developers be more productive. 
+In this quicklab we will take a look at a Appsody and Codewind and how they can help developers be more productive. Appsody is a command line to for creating, building, and deploying cloud native applications. Eclipse Codewind is a IDE plugin that integrates with your existing workflow allowing you to develop cloud native applications just like how you were building applications before. 
+
+Appsody and Codewind allow developers to start building cloud native applications like an expert without having to be an expert in all the cloud native technologies. 
 
 ## Prerequistes
 
@@ -27,7 +29,7 @@ This quicklab will require several command-line tools to be completed, you will 
 
 ## Getting Familiar with Appsody
 
-[Appsody](https://appsody.dev/) is a command-line interface that can be used for the initialization of cloud native projects. Let's look at how to use Appsody to initialize a Spring Boot project. 
+[Appsody](https://appsody.dev/) is a command-line interface for creating, building, and deploying cloud native projects. Let's look at how to use Appsody to initialize a Spring Boot project. 
 
 Appsody uses a concept called "stacks" that are templates to define how a project should be initialized, how it's Docker image should be built, and define how it should be deployed on a kubernetes cluster. To view available stacks run the following command:
 
@@ -54,13 +56,13 @@ experimental	vertx                    	0.1.1    	*default         	Eclipse Vert.
 
 Organizations will have their own specific needs and requirements. For which custom stacks can be created, however Appsody has several pre-defined stacks as well. To view available stacks run this command:
 
-```
+``` 
 appsody repo add incubator https://raw.githubusercontent.com/seabaylea/stacks/javametrics-dev/index.yaml
 ```
 
 ## Improving Developer Productivity with Eclipse Codewind
 
-[Eclipse Codewind](https://www.eclipse.org/codewind/) is also an open source project that is part of Kabanero. Codewind is a plugin for IDEs, currently available in VS Code, Eclipse, and Eclipse Che, that helps improve developer productivity. Let's explore how Codewind can help you be a more productive developer.
+[Eclipse Codewind](https://www.eclipse.org/codewind/) is also an open source project that is part of Kabanero. Codewind is a plugin for IDEs, currently available in VS Code, Eclipse, and Eclipse Che, that helps improve developer productivity when developing . Let's explore how Codewind can help you be a more productive developer.
 
 1. Open VS Code (press **command** + **space bar** and type "VS Code" into the dialog box)
 2. In the explorer window under **CODEWIND** click on the "**+**" to create a new project
@@ -116,11 +118,15 @@ Let's look at this feature in action.
 
 Viewing the logs of your application running in a docker container is easy from the IDE with Codewind. 
 
+To view the logs for an application, right click on it and select "Show All Logs" 
 
+![](images/show-logs.png)
+
+The logs for the running application will be shown in the IDE console log window on the bottom right of the page. 
 
 ### Deploying an Application to Kubernetes with Appsody 
 
-The cloud native world demands developer learn a lot of new skills that traditionally they didn't need to care about. Appsody helps to reduce this learning curve by helping with tasks like deploying to a kubernetes cluster. 
+The cloud native world demands developer learn a lot of new skills that traditionally they didn't need understand before. Appsody helps to reduce this learning curve by helping with tasks like deploying to a kubernetes cluster. Let's deploy the application we have been building in this quicklab to a local kubernetes cluster!
 
 1. First we will need to start our minikube cluster:
 
@@ -143,7 +149,7 @@ The cloud native world demands developer learn a lot of new skills that traditio
 1. Once the deploy has completed, we will need to tell minikube to expose the service, to do this run the following command:
 
 	```
-	minikube service appsody-spring
+	minikube service spring-cloud-native
 	```
 
 Minikube will expose the service and open a browser window allowing you to view the application we just deployed.
