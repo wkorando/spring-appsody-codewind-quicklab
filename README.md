@@ -1,37 +1,38 @@
 # Spring Appsody Codewind Quicklab
 
-Organizations are moving to the cloud and that is creating a lot of demand for developers to learn new technologies. Creating a "Cloud Native" application requires developers to learn about containers (e.g. Docker) and platforms like Kubernetes. These are very complex technologies, so what are developers to do while still needing to develop applications that deliver business value? 
+Moving workloads to the cloud introduces a steep learning curve for developers accustomed to traditional web application developmenr. Cloud-native applications are usually containerized (either Docker or OCI containers) and are run on orchestrated platforms like Kubernetes. These are complex technologies that bring big changes to the development workflow. Can this be simplified? Can developers create cloud-native applicatioons and deploy them to Kubernetes without climbing the mountainous learning curve? 
 
-In this quicklab we will take a look at a Appsody and Codewind and how they can help developers be more productive. Appsody is a command line to for creating, building, and deploying cloud native applications. Eclipse Codewind is a IDE plugin that integrates with your existing workflow allowing you to develop cloud native applications just like how you were building applications before. 
+In this quicklab we will take a look at a Appsody and Codewind, two technologies that simplify development of containerized cloud-native appplications. Appsody provides self-contained stacks for creating, building, and deploying cloud-native applications in a consistent and customized way for teams and organizations. Eclipse Codewind is an IDE plugin that allows you to work with containerized applications in a familiar way.
 
-Appsody and Codewind allow developers to start building cloud native applications like an expert without having to be an expert in all the cloud native technologies. 
+Appsody and Codewind allow developers to start building cloud-native applications like an expert without having to be an expert in all the cloud-native technologies. 
 
 ## Prerequistes
 
-Only needed if running steps on own machine
+If you're running this lab on your own laptop, we need to pre-install some tools.
 
 <details>
   <summary>Click to expand</summary>
   
 ### Configure Local System
 
-This quicklab will require several command-line tools to be completed, you will need to have all the following installed. It is also generally recommended to have the most recent versions of these tools: 
+This quicklab requires the following tools: 
 
 1. Install Docker
 2. Install minikube
 3. Install Appsody
 4. Install VS Code
-5. 	Install codewind extension
-6. Install java extension
+5. 	Install VS Code codewind extension
+6. Install VS Code java extension
 
+We recommend working with the latest available version of each.
 
 </details>
 
 ## Getting Familiar with Appsody
 
-[Appsody](https://appsody.dev/) is a command-line interface for creating, building, and deploying cloud native projects. Let's look at how to use Appsody to initialize a Spring Boot project. 
+[Appsody](https://appsody.dev/) is a command-line interface for creating, building, and deploying cloud-native projects. Let's look at how to use Appsody to initialize a Spring Boot project. 
 
-Appsody uses a concept called "stacks" that are templates to define how a project should be initialized, how it's Docker image should be built, and define how it should be deployed on a kubernetes cluster. To view available stacks run the following command:
+Appsody uses a concept called "stacks". The appsody CLI defines a few simple commands that work with defined stacks to create, run, test, debug, build, and deploy applications to Kubernetes. To view available stacks run the following command:
 
 ```
 $ appsody list
@@ -62,7 +63,7 @@ appsody repo add incubator https://raw.githubusercontent.com/seabaylea/stacks/ja
 
 ## Improving Developer Productivity with Eclipse Codewind
 
-[Eclipse Codewind](https://www.eclipse.org/codewind/) is also an open source project that is part of Kabanero. Codewind is a plugin for IDEs, currently available in VS Code, Eclipse, and Eclipse Che, that helps improve developer productivity when developing . Let's explore how Codewind can help you be a more productive developer.
+[Eclipse Codewind](https://www.eclipse.org/codewind/) is a plugin for IDEs, currently available in VS Code, Eclipse, and Eclipse Che, that helps improve developer productivity when developing containerized applications. Let's explore how Codewind can help you be a more productive developer.
 
 1. Open VS Code (press **command** + **space bar** and type "VS Code" into the dialog box)
 2. In the explorer window under **CODEWIND** click on the "**+**" to create a new project
@@ -73,7 +74,7 @@ appsody repo add incubator https://raw.githubusercontent.com/seabaylea/stacks/ja
 
 ### Automated Code Reload
 
-A key to increasing developer productivity is shortening and reducing the friction in the feedback loop. Having to manually run `mvn package` and `docker build` every time you want to verify and change to your application is time consuming and distracting. When appsody detects a change in a running application, it will automatically rebuild and redeploy the application.  
+A key to increasing developer productivity is shortening and reducing the friction in the feedback loop. `appsody run` will run the Spring application in the foreground, using Spring DevTools to restart the application in the container when changes have been detected. Codewind brings this appsody capability into the IDE in a familiar way.  
 
 Let's look at this feature in action.
 
@@ -154,5 +155,5 @@ The cloud native world demands developer learn a lot of new skills that traditio
 
 Minikube will expose the service and open a browser window allowing you to view the application we just deployed.
 
-Appsody and Codewind help Java developers create, build, and deploy cloud native applications without having to be experts in cloud native development!
+Appsody and Codewind help Java developers create, build, and deploy cloud-native applications without having to be experts in cloud native development!
 
