@@ -68,7 +68,7 @@ appsody repo add incubator https://raw.githubusercontent.com/seabaylea/stacks/ja
 1. Open VS Code (press **command** + **space bar** and type "VS Code" into the dialog box)
 2. In the explorer window under **CODEWIND** click on the "**+**" to create a new project
 	![](images/codewind-explorer.png)
-3. In the dialog pop-up search for "Spring template" and select the "Spring template" option	![](images/codewind-new-project.png)
+3. In the dialog pop-up search for "Spring Boot" and select the "Appsody Spring Boot default template" option	![](images/codewind-new-project.png)
 4. Enter **codewind-spring** as the project name and hit enter
 	![](images/codewind-new-project-part2.png)
 
