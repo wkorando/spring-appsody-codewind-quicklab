@@ -113,7 +113,7 @@ Let's look at this feature in action.
 6. You can view the status of the re-build and re-deploy by looking at the status indictaor next to the project under the Codewind context. Once status returnss to [Running][Build Suceeded] you can refresh your browser window to view the change we made. 
 	![](images/project-status.png)	
 1. In VS Code click the "go to application" icon	![](images/open-project.png)
-2. Append `/v1/hello?name=Oracle Code One` to the end of the url
+2. Append `/v1/hello?name=Cloud Native Spring` to the end of the url
 
 ### Viewing Application Logs
 
