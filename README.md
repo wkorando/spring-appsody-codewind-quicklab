@@ -69,7 +69,7 @@ appsody repo add incubator https://raw.githubusercontent.com/seabaylea/stacks/ja
 2. In the explorer window under **CODEWIND** click on the "**+**" to create a new project
 	![](images/codewind-explorer.png)
 3. In the dialog pop-up search for "Spring Boot" and select the "Appsody Spring Boot default template" option	![](images/codewind-new-project.png)
-4. Enter **codewind-spring** as the project name and hit enter
+4. Enter **cloud-native-spring** as the project name and hit enter
 	![](images/codewind-new-project-part2.png)
 
 ### Automated Code Reload
@@ -150,7 +150,7 @@ The cloud native world demands developer learn a lot of new skills that traditio
 1. Once the deploy has completed, we will need to tell minikube to expose the service, to do this run the following command:
 
 	```
-	minikube service spring-cloud-native
+	minikube service cloud-native-spring
 	```
 
 Minikube will expose the service and open a browser window allowing you to view the application we just deployed.
