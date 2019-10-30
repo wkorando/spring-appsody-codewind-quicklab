@@ -2,7 +2,7 @@
 
 Moving workloads to the cloud introduces a steep learning curve for developers accustomed to traditional web application developmenr. Cloud-native applications are usually containerized (either Docker or OCI containers) and are run on orchestrated platforms like Kubernetes. These are complex technologies that bring big changes to the development workflow. Can this be simplified? Can developers create cloud-native applicatioons and deploy them to Kubernetes without climbing the mountainous learning curve? 
 
-In this quicklab we will take a look at a Appsody and Codewind, two technologies that simplify development of containerized cloud-native appplications. Appsody provides self-contained stacks for creating, building, and deploying cloud-native applications in a consistent and customized way for teams and organizations. Eclipse Codewind is an IDE plugin that allows you to work with containerized applications in a familiar way.
+In this quicklab we will take a look at an usecase involving "Appsody and Codewind", two technologies that simplify development of containerized cloud-native applications. Appsody provides self-contained stacks for creating, building, and deploying cloud-native applications in a consistent and customized way for teams and organizations. Eclipse Codewind is an IDE plugin that allows you to work with containerized applications in a familiar way.
 
 Appsody and Codewind allow developers to start building cloud-native applications like an expert without having to be an expert in all the cloud-native technologies. 
 
