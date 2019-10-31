@@ -124,7 +124,7 @@ Viewing the logs of your application running in a docker container is easy from 
 
 To view the logs for an application, right click on it and select "Show All Logs" 
 
-![](images/show-logs.png)
+![](images/show-logs-new.png)
 
 The logs for the running application will be shown in the IDE console log window on the bottom right of the page. 
 
