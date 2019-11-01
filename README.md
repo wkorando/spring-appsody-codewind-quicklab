@@ -21,7 +21,7 @@ This quicklab requires the following tools:
 2. Install minikube
 3. Install Appsody
 4. Install VS Code
-5. 	Install VS Code codewind extension
+5. Install VS Code codewind extension
 6. Install VS Code java extension
 
 We recommend working with the latest available version of each.
@@ -67,10 +67,13 @@ appsody repo add incubator https://raw.githubusercontent.com/seabaylea/stacks/ja
 
 1. Open VS Code (press **command** + **space bar** and type "VS Code" into the dialog box)
 2. In the explorer window under **CODEWIND** click on the "**+**" to create a new project
-	![](images/codewind-explorer.png)
-3. In the dialog pop-up search for "Spring Boot" and select the "Appsody Spring Boot default template" option	![](images/codewind-new-project.png)
+![](images/codewind-explorer.png)
+
+3. In the dialog pop-up search for "Spring Boot" and select the "Appsody Spring Boot default template" option
+![](images/codewind-new-project-part3.png)
+
 4. Enter **cloud-native-spring** as the project name and hit enter
-	![](images/codewind-new-project-part2.png)
+![](images/codewind-explorer-new.png)
 
 ### Automated Code Reload
 
@@ -78,8 +81,8 @@ A key to increasing developer productivity is shortening and reducing the fricti
 
 Let's look at this feature in action.
 
-3. In VS Code add the **cloud-native-spring** project folder to the explorer
-	![](images/add-folder.png)
+3. In VS Code add the **cloud-native-spring** project folder to the workspace
+	![](images/add-project.png)
 4. 	In the project under **src/main/java/application** create a new file **Hello.java**
 5. Edit **Hello.java** to look like below:
 	
@@ -110,10 +113,10 @@ Let's look at this feature in action.
 	
 	}
 	```
-6. You can view the status of the re-build and re-deploy by looking at the status indicator next to the project under the Codewind context. Once status returns to [Running][Build Suceeded] you can refresh your browser window to view the change we made. 
+6. You can view the status of the re-build and re-deploy by looking at the status indicator next to the project under the Codewind context. Once status returns to [Running][Build Suceeded] you can refresh your browser window to view the change we made. Please be aware that it can take a few seconds until something happens. 
 	![](images/project-status.png)	
 1. In VS Code click the "go to application" icon	![](images/open-project.png)
-2. Append `/v1/hello?name=Cloud Native Spring` to the end of the url
+2. Append `/v1/hello?name=Cloud%20Native%20Spring` to the end of the url
 
 ### Viewing Application Logs
 
@@ -121,7 +124,7 @@ Viewing the logs of your application running in a docker container is easy from 
 
 To view the logs for an application, right click on it and select "Show All Logs" 
 
-![](images/show-logs.png)
+![](images/show-logs-new.png)
 
 The logs for the running application will be shown in the IDE console log window on the bottom right of the page. 
 
@@ -129,7 +132,13 @@ The logs for the running application will be shown in the IDE console log window
 
 The cloud native world demands developer learn a lot of new skills that traditionally they didn't need understand before. Appsody helps to reduce this learning curve by helping with tasks like deploying to a kubernetes cluster. Let's deploy the application we have been building in this quicklab to a local kubernetes cluster!
 
-1. First we will need to start our minikube cluster:
+1. Make sure that you are in the correct folder before starting your minikube cluster: 
+
+	```
+	cd “~/codewind-workspace/Cloud Native Spring”
+	```
+
+1. Now we will need to start our minikube cluster:
 
 	```
 	minikube start
